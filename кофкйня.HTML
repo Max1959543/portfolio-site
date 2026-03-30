@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Кофе & Уют | Городская кофейня</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background-color: #FEF9F0;   /* тёплый светлый фон */
+      color: #2C241A;
+      line-height: 1.4;
+      scroll-behavior: smooth;
+    }
+
+    /* контейнер для центрирования */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* секции с отступами */
+    section {
+      padding: 64px 0;
+    }
+
+    /* ===== ХЕДЕР / ГЛАВНЫЙ ЭКРАН ===== */
+    .hero {
+      background: linear-gradient(135deg, #F7E9D7 0%, #F0E0CA 100%);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      padding: 80px 0 96px;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .badge {
+      background: rgba(200, 120, 60, 0.15);
+      backdrop-filter: blur(2px);
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #A55D35;
+      margin-bottom: 24px;
+      letter-spacing: 0.3px;
+    }
+
+    h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #2C241A, #6B3E1C);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .subhead {
+      font-size: 1.3rem;
+      color: #4F3A28;
+      max-width: 600px;
+      margin-bottom: 36px;
+      font-weight: 450;
+    }
+
+    /* кнопка основная */
+    .btn-primary {
+      display: inline-block;
+      background-color: #B8723A;
+      color: white;
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 14px 36px;
+      border-radius: 60px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      background-color: #9B5E2E;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 22px rgba(0,0,0,0.1);
+    }
+
+    /* ===== преимущества (3 карточки) ===== */
+    .advantages {
+      background-color: #ffffff;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 48px;
+      color: #2C241A;
+      letter-spacing: -0.3px;
+    }
+
+    .cards-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      justify-content: center;
+    }
+
+    .advantage-card {
+      flex: 1;
+      min-width: 240px;
+      background: #FEFAF5;
+      border-radius: 32px;
+      padding: 32px 24px;
+      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.02);
+      border: 1px solid #F2E5D8;
+    }
+
+    .advantage-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
+      border-color: #EBD9C8;
+    }
+
+    .icon {
+      font-size: 3.6rem;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+
+    .advantage-card h3 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #3A2C1F;
+    }
+
+    .advantage-card p {
+      color: #5E4B36;
+      line-height: 1.45;
+      font-size: 0.98rem;
+    }
+
+    /* ===== CTA секция ===== */
+    .cta-section {
+      background: linear-gradient(120deg, #EADBCE, #F4E8DC);
+      text-align: center;
+      border-radius: 48px;
+      margin: 32px 24px;
+      padding: 56px 32px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.05);
+    }
+
+    .cta-section h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #2F241B;
+    }
+
+    .cta-section p {
+      font-size: 1.2rem;
+      max-width: 520px;
+      margin: 0 auto 28px auto;
+      color: #4F3E2E;
+    }
+
+    .btn-cta {
+      background-color: #2C241A;
+      color: #FFEBD6;
+      padding: 14px 40px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 60px;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-cta:hover {
+      background-color: #4D3824;
+      transform: scale(1.02);
+      color: white;
+    }
+
+    /* ===== футер ===== */
+    footer {
+      background-color: #1F1912;
+      color: #D9C7B2;
+      padding: 48px 0 32px;
+      margin-top: 40px;
+    }
+
+    .footer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .footer-brand p {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 8px;
+      color: #F3E1CE;
+    }
+
+    .footer-brand small {
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #E7D4C0;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: #ffc49b;
+    }
+
+    .footer-copyright {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(217, 199, 178, 0.2);
+      font-size: 0.8rem;
+      letter-spacing: 0.3px;
+    }
+
+    /* ===== адаптивность (мобильные) ===== */
+    @media (max-width: 768px) {
+      section {
+        padding: 48px 0;
+      }
+
+      .hero {
+        padding: 60px 0 72px;
+      }
+
+      h1 {
+        font-size: 2.4rem;
+      }
+
+      .subhead {
+        font-size: 1.1rem;
+      }
+
+      .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 32px;
+      }
+
+      .cards-grid {
+        gap: 24px;
+      }
+
+      .advantage-card {
+        min-width: 100%;
+        padding: 28px 20px;
+      }
+
+      .cta-section {
+        margin: 16px 16px;
+        padding: 40px 20px;
+        border-radius: 36px;
+      }
+
+      .cta-section h2 {
+        font-size: 1.8rem;
+      }
+
+      .footer-grid {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-links {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 20px;
+      }
+
+      .btn-primary, .btn-cta {
+        padding: 12px 28px;
+        font-size: 1rem;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .icon {
+        font-size: 3rem;
+      }
+    }
+
+    /* плавное появление */
+    .fade-in {
+      animation: fadeUp 0.6s ease-out;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* интерактив для кнопки (просто наведи) */
+    .btn-primary:active, .btn-cta:active {
+      transform: scale(0.97);
+    }
+  </style>
+</head>
+<body>
+
+<main>
+  <!-- Герой-секция: заголовок + подзаголовок -->
+  <div class="hero">
+    <div class="container hero-content fade-in">
+      <div class="badge">✨ свежая обжарка каждый день</div>
+      <h1>Кофе, который <br>просыпается с тобой</h1>
+      <p class="subhead">Уютная кофейня в центре города. Ароматный specialty, домашние десерты и атмосфера, в которую хочется возвращаться.</p>
+      <a href="#" class="btn-primary" id="mainCtaBtn">Забронировать столик →</a>
+    </div>
+  </div>
+
+  <!-- Блок преимуществ: 3 карточки с иконками-эмодзи -->
+  <section class="advantages">
+    <div class="container">
+      <h2 class="section-title">Почему выбирают нас</h2>
+      <div class="cards-grid">
+        <!-- Преимущество 1 -->
+        <div class="advantage-card">
+          <div class="icon">☕🧑‍🌾</div>
+          <h3>Авторский подход</h3>
+          <p>Зерна от лучших фермеров, обжарка под контролем бариста. Каждая чашка — индивидуальный характер.</p>
+        </div>
+        <!-- Преимущество 2 -->
+        <div class="advantage-card">
+          <div class="icon">🕰️📖</div>
+          <h3>Домашняя атмосфера</h3>
+          <p>Мягкий свет, книги, живая музыка по вечерам. Место, где можно работать, встречаться или просто быть собой.</p>
+        </div>
+        <!-- Преимущество 3 -->
+        <div class="advantage-card">
+          <div class="icon">🍰🥐</div>
+          <h3>Сезонные десерты</h3>
+          <p>Домашняя выпечка, безглютеновые опции и десерты от кондитера — каждый месяц новое меню сладостей.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Призыв к действию (CTA блок) -->
+  <div class="container">
+    <div class="cta-section">
+      <h2>Готов попробовать лучший латте в городе? 🎯</h2>
+      <p>Приходи сам или с компанией — для первых 20 гостей каждый день скидка 15% на зерновой кофе.</p>
+      <a href="#" class="btn-cta" id="ctaButton">Получить скидку →</a>
+    </div>
+  </div>
+</main>
+
+<!-- Футер -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <p>☕ Coffee Mood</p>
+        <small>спешелти кофе & уют</small>
+      </div>
+      <div class="footer-links">
+        <a href="#">О нас</a>
+        <a href="#">Меню</a>
+        <a href="#">Контакты</a>
+        <a href="#">Вакансии</a>
+      </div>
+      <div class="footer-contact">
+        <span>📞 +7 (999) 123-45-67</span><br>
+        <span>📍 ул. Ароматная, 15, Москва</span>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      © 2025 Coffee Mood — каждая чашка с душой. Все права защищены.
+    </div>
+  </div>
+</footer>
+
+<!-- Небольшой интерактив для кнопок (alert как демо-действие) без библиотек -->
+<script>
+  (function() {
+    // Обработчики для кнопок — чистый UX без перезагрузки страницы (имитация)
+    const mainBtn = document.getElementById('mainCtaBtn');
+    const ctaBtn = document.getElementById('ctaButton');
+    
+    function handleAction(message) {
+      // небольшое визуальное сообщение, можно аккуратно уведомить
+      // используем alert, но он не ломает дизайн, просто демонстрирует призыв
+      alert(message);
+    }
+    
+    if (mainBtn) {
+      mainBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        handleAction('✨ Отлично! Мы подготовили для вас форму бронирования. Наш менеджер свяжется с вами в ближайшее время.');
+      });
+    }
+    
+    if (ctaBtn) {
+      ctaBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        handleAction('🎉 Скидка активирована! Покажите это сообщение бариста и получите -15% на зерновой кофе. Действует сегодня.');
+      });
+    }
+    
+    // Добавим легкую анимацию при скролле (просто для эстетики)
+    const cards = document.querySelectorAll('.advantage-card');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0px)';
+        }
+      });
+    }, { threshold: 0.2 });
+    
+    cards.forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      card.style.transition = 'opacity 0.5s ease, transform 0.5s ease, box-shadow 0.2s';
+      observer.observe(card);
+    });
+    
+    // для hero текст и CTA тоже сделаем плавный вход (они уже имеют fade-in, но карточки добавим)
+    // дополнительно: плавный показ для cta блока
+    const ctaBlock = document.querySelector('.cta-section');
+    if (ctaBlock) {
+      ctaBlock.style.opacity = '0';
+      ctaBlock.style.transform = 'translateY(18px)';
+      ctaBlock.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      const ctaObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            ctaObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      ctaObserver.observe(ctaBlock);
+    }
+    
+    // Инициализация карточек: если они уже видны — показать
+    setTimeout(() => {
+      cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0px)';
+          observer.unobserve(card);
+        }
+      });
+      if (ctaBlock && ctaBlock.getBoundingClientRect().top < window.innerHeight - 100) {
+        ctaBlock.style.opacity = '1';
+        ctaBlock.style.transform = 'translateY(0)';
+      }
+    }, 100);
+  })();
+</script>
+</body>
+</html>
